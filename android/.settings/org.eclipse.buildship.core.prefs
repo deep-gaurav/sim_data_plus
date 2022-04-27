@@ -1,0 +1,16 @@
+=\=\=\=\=\=\=
+<<<<<<<=HEAD
+>>>>>>>=05b8c07b35566ba25c3eb52cf581ebf031cdbc48
+arguments=
+auto.sync=false
+build.scans.enabled=false
+connection.gradle.distribution=GRADLE_DISTRIBUTION(VERSION(7.1.1))
+connection.project.dir=../example/android
+eclipse.preferences.version=1
+gradle.user.home=
+java.home=C\:/Program Files/Java/jdk1.8.0_301
+jvm.arguments=
+offline.mode=false
+override.workspace.settings=true
+show.console.view=true
+show.executions.view=true
