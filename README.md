@@ -18,7 +18,7 @@ Before you use this plugin, you must make sure that the user has authorized acce
 
 You may then use the plugin:
 ``` dart
-import 'package:sim_data_modified/sim_data.dart';
+import 'package:sim_data_plus/sim_data.dart';
 
 void printSimCardsData() async {
   try {
