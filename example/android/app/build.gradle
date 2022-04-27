@@ -37,7 +37,7 @@ android {
     // resolutionStrategy { force 'androidx.core:core-ktx:1.6.0' }
     // } 
         // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId "com.example.sim_data_plus_example"
+        applicationId "com.selftech.sim_data_example"
         minSdkVersion 23
         targetSdkVersion 28
         versionCode flutterVersionCode.toInteger()
