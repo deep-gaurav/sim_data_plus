@@ -206,7 +206,6 @@ public class SimDataPlugin implements FlutterPlugin, MethodCallHandler, Activity
       card.put("isDataRoaming", (dataRoaming == 1));
       card.put("isNetworkRoaming", networkRoaming);
       card.put("subscriptionId",subscriptionId);
-      String isIccCard  = telephonyManager.getSubscriberId();
       try{
         String phoneNumber = subscriptionInfo.getNumber();
         card.put("phoneNumber",phoneNumber);
