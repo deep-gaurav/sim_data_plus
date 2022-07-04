@@ -140,11 +140,6 @@ public class SimDataPlugin implements FlutterPlugin, MethodCallHandler, Activity
       }catch(Exception ex){
         System.out.println("Excp - "+ex);
       }
-      
-      //fetching IMSI/subscriber id number using system service
-      TelephonyManager telephonyManager = (TelephonyManager)  this.applicationContext.getSystemService(Context.TELEPHONY_SERVICE);
-      String imsi = telephonyManager.getSubscriberId();
-
       //add json object of sim card data into json array
       cards.put(card);
     }

@@ -4,12 +4,9 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="98e4eb7b-bb9a-4ab7-8f62-15221f470c74" name="Default Changelist" comment="Info updated">
+    <list default="true" id="98e4eb7b-bb9a-4ab7-8f62-15221f470c74" name="Default Changelist" comment="added support for targetSdkVersion 30">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/android/src/main/java/com/example/sim_data_plus/SimDataPlugin.java" beforeDir="false" afterPath="$PROJECT_DIR$/android/src/main/java/com/example/sim_data_plus/SimDataPlugin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/android/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/example/android/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/example/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/example/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/example/pubspec.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -136,7 +133,14 @@
       <option name="project" value="LOCAL" />
       <updated>1651148197099</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="added support for targetSdkVersion 30">
+      <created>1656653568997</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1656653568997</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -161,6 +165,7 @@
     <MESSAGE value="version change" />
     <MESSAGE value="Example updated" />
     <MESSAGE value="Info updated" />
-    <option name="LAST_COMMIT_MESSAGE" value="Info updated" />
+    <MESSAGE value="added support for targetSdkVersion 30" />
+    <option name="LAST_COMMIT_MESSAGE" value="added support for targetSdkVersion 30" />
   </component>
 </project>
