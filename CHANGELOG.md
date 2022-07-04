@@ -9,3 +9,7 @@ First working version
 ## 0.1.2
 
 added support for targetSdkVersion 30
+
+## 0.1.2
+
+added support for targetSdkVersion 30 for lower android versions
