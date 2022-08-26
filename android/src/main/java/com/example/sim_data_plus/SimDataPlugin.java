@@ -130,7 +130,7 @@ public class SimDataPlugin implements FlutterPlugin, MethodCallHandler, Activity
       card.put("displayName", displayName.toString());
       card.put("isDataRoaming", (dataRoaming == 1));
       card.put("isNetworkRoaming", networkRoaming);
-      // card.put("phoneNumber", phoneNumber);
+      card.put("slotIndex", slotIndex);
       card.put("serialNumber", serialNumber);
       card.put("subscriptionId",subscriptionId);
 
@@ -201,6 +201,7 @@ public class SimDataPlugin implements FlutterPlugin, MethodCallHandler, Activity
       card.put("isDataRoaming", (dataRoaming == 1));
       card.put("isNetworkRoaming", networkRoaming);
       card.put("subscriptionId",subscriptionId);
+      card.put("slotIndex", slotIndex);
       try{
         String phoneNumber = subscriptionInfo.getNumber();
         card.put("phoneNumber",phoneNumber);

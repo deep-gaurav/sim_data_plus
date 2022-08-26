@@ -19,7 +19,7 @@ class SimCard {
   final bool isNetworkRoaming;
   // final int mcc;
   // final int mnc;
-  // final int slotIndex;
+  final int slotIndex;
   final String serialNumber;
   final int? subscriptionId;
   final String? phoneNumber;
@@ -31,7 +31,7 @@ class SimCard {
       this.isDataRoaming,
       // this.mcc,
       // this.mnc,
-      // this.slotIndex,
+      this.slotIndex,
       this.serialNumber,
       this.subscriptionId,
       this.phoneNumber,
@@ -46,7 +46,7 @@ class SimCard {
       card['isNetworkRoaming'],
       // card['mcc'],
       // card['mnc'],
-      // card['slotIndex'],
+      card['slotIndex'],
       card['serialNumber'],
       card['subscriptionId']??0,
       card['phoneNumber']??''
