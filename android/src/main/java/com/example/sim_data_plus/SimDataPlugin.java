@@ -121,6 +121,8 @@ public class SimDataPlugin implements FlutterPlugin, MethodCallHandler, Activity
       boolean networkRoaming = subscriptionManager.isNetworkRoaming(slotIndex);
       // String phoneNumber = subscriptionInfo.getNumber();
       int subscriptionId = subscriptionInfo.getSubscriptionId();
+
+      String iccId = subscriptionInfo.getIccId();
                          
       //storing variable data into new json object for each sim card
       JSONObject card = new JSONObject();
@@ -133,6 +135,7 @@ public class SimDataPlugin implements FlutterPlugin, MethodCallHandler, Activity
       card.put("slotIndex", slotIndex);
       card.put("serialNumber", serialNumber);
       card.put("subscriptionId",subscriptionId);
+      card.put("iccId", iccId);
 
       try{
         String phoneNumber = subscriptionInfo.getNumber();
@@ -191,6 +194,7 @@ public class SimDataPlugin implements FlutterPlugin, MethodCallHandler, Activity
       boolean networkRoaming = subscriptionManager.isNetworkRoaming(slotIndex);
       // String phoneNumber = subscriptionInfo.getNumber();
       int subscriptionId = subscriptionInfo.getSubscriptionId();
+      String iccId = subscriptionInfo.getIccId();
 
       //storing variable data into new json object for each sim card
       JSONObject card = new JSONObject();
@@ -202,7 +206,14 @@ public class SimDataPlugin implements FlutterPlugin, MethodCallHandler, Activity
       card.put("isNetworkRoaming", networkRoaming);
       card.put("subscriptionId",subscriptionId);
       card.put("slotIndex", slotIndex);
+      card.put("iccId",iccId);
       try{
+        int val = applicationContext.checkCallingOrSelfPermission(Manifest.permission.READ_PHONE_NUMBERS);
+        if(val!=PackageManager.PERMISSION_GRANTED){
+          System.out.println("PHONE NUMBER PERMISSION NOT PRESENT");
+        }else {
+          System.out.println("PHONE NUMBER PERMISSION PRESENT");
+        }
         String phoneNumber = subscriptionInfo.getNumber();
         card.put("phoneNumber",phoneNumber);
       }catch(Exception ex){
