@@ -17,27 +17,27 @@ class SimCard {
   final String displayName;
   final bool isDataRoaming;
   final bool isNetworkRoaming;
-  // final int mcc;
-  // final int mnc;
+  final String mcc;
+  final String mnc;
   final int slotIndex;
   final String serialNumber;
   final int? subscriptionId;
   final String? phoneNumber;
   final String? iccId;
   SimCard(
-      this.carrierName,
-      this.countryCode,
-      this.displayName,
-      this.isNetworkRoaming,
-      this.isDataRoaming,
-      // this.mcc,
-      // this.mnc,
-      this.slotIndex,
-      this.serialNumber,
-      this.subscriptionId,
-      this.phoneNumber,
-      this.iccId,
-      );
+    this.carrierName,
+    this.countryCode,
+    this.displayName,
+    this.isNetworkRoaming,
+    this.isDataRoaming,
+    this.slotIndex,
+    this.serialNumber,
+    this.subscriptionId,
+    this.phoneNumber,
+    this.iccId,
+    this.mcc,
+    this.mnc,
+  );
 
   static SimCard fromJson(dynamic card) {
     return SimCard(
@@ -46,13 +46,13 @@ class SimCard {
       card['displayName'],
       card['isDataRoaming'],
       card['isNetworkRoaming'],
-      // card['mcc'],
-      // card['mnc'],
       card['slotIndex'],
       card['serialNumber'],
-      card['subscriptionId']??0,
-      card['phoneNumber']??'',
-      card['iccId']
+      card['subscriptionId'] ?? 0,
+      card['phoneNumber'] ?? '',
+      card['iccId'],
+      card['mcc'],
+      card['mnc'],
     );
   }
 }

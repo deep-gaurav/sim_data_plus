@@ -5,6 +5,7 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.pm.PackageManager;
+import android.os.Build;
 import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
 import android.telephony.TelephonyManager;
@@ -121,6 +122,14 @@ public class SimDataPlugin implements FlutterPlugin, MethodCallHandler, Activity
       boolean networkRoaming = subscriptionManager.isNetworkRoaming(slotIndex);
       // String phoneNumber = subscriptionInfo.getNumber();
       int subscriptionId = subscriptionInfo.getSubscriptionId();
+      String mnc,mcc;
+      if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+        mnc = subscriptionInfo.getMncString();
+        mcc = subscriptionInfo.getMccString();
+      }else{
+        mnc = Integer.toString(subscriptionInfo.getMnc());
+        mcc = Integer.toString(subscriptionInfo.getMcc());
+      }
 
       String iccId = subscriptionInfo.getIccId();
                          
@@ -136,6 +145,8 @@ public class SimDataPlugin implements FlutterPlugin, MethodCallHandler, Activity
       card.put("serialNumber", serialNumber);
       card.put("subscriptionId",subscriptionId);
       card.put("iccId", iccId);
+      card.put("mcc",mcc);
+      card.put("mnc",mnc);
 
       try{
         String phoneNumber = subscriptionInfo.getNumber();
@@ -196,6 +207,7 @@ public class SimDataPlugin implements FlutterPlugin, MethodCallHandler, Activity
       int subscriptionId = subscriptionInfo.getSubscriptionId();
       String iccId = subscriptionInfo.getIccId();
 
+
       //storing variable data into new json object for each sim card
       JSONObject card = new JSONObject();
 
@@ -207,6 +219,8 @@ public class SimDataPlugin implements FlutterPlugin, MethodCallHandler, Activity
       card.put("subscriptionId",subscriptionId);
       card.put("slotIndex", slotIndex);
       card.put("iccId",iccId);
+      card.put("mcc",Integer.toString(mcc));
+      card.put("mnc", Integer.toString(mnc));
       try{
         int val = applicationContext.checkCallingOrSelfPermission(Manifest.permission.READ_PHONE_NUMBERS);
         if(val!=PackageManager.PERMISSION_GRANTED){
