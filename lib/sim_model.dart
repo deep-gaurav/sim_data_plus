@@ -12,15 +12,15 @@ class SimData {
 }
 
 class SimCard {
-  final String carrierName;
-  final String countryCode;
-  final String displayName;
-  final bool isDataRoaming;
-  final bool isNetworkRoaming;
-  final String mcc;
-  final String mnc;
-  final int slotIndex;
-  final String serialNumber;
+  final String? carrierName;
+  final String? countryCode;
+  final String? displayName;
+  final bool? isDataRoaming;
+  final bool? isNetworkRoaming;
+  final String? mcc;
+  final String? mnc;
+  final int? slotIndex;
+  final String? serialNumber;
   final int? subscriptionId;
   final String? phoneNumber;
   final String? iccId;
