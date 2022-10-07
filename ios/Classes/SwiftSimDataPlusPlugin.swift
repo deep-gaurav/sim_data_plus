@@ -27,7 +27,7 @@ public class SwiftSimDataPlusPlugin: NSObject, FlutterPlugin {
           var cards:[Card] = [];
           var index = 0;
           for carrier in carriers{
-              if(carrier.value != nil){
+              if(carrier.value?.mobileNetworkCode != nil){
                   let card = Card(mcc: carrier.value?.mobileCountryCode ?? "", mnc: carrier.value?.mobileNetworkCode ?? "", slotIndex: index, carrierName: carrier.value?.carrierName ?? "")
                   cards.append(card);
                   index += 1;
