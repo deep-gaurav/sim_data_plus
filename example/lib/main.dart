@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:sim_data_plus/sim_data.dart';
 
-
 void main() => runApp(const MyApp());
 
 class MyApp extends StatefulWidget {
@@ -28,24 +27,24 @@ class _MyAppState extends State<MyApp> {
     try {
       //fetching status of access to phone permission
       var status = await Permission.phone.status;
-      if (!status.isGranted) {
-        bool isGranted = await Permission.phone.request().isGranted;
-        if (!isGranted) return;
-      }
+      // if (!status.isGranted) {
+      //   bool isGranted = await Permission.phone.request().isGranted;
+      //   if (!isGranted) return;
+      // }
 
       //calling plugin method to fetch sim data
-      await SimDataPlugin.getSimData().then((simData){
+
+      await SimDataPlugin.getSimData().then((simData) {
         setState(() {
           _isLoading = false;
           _simData = simData;
           for (var item in _simData!.cards) {
-            if(item.serialNumber==null){
+            if (item.serialNumber == null) {
               print("Serial Number is null need to ussd call");
             }
           }
         });
       });
-
     } catch (e) {
       debugPrint(e.toString());
       setState(() {
@@ -87,7 +86,8 @@ class _MyAppState extends State<MyApp> {
                                         'isNetworkRoaming: ${card.isNetworkRoaming}'),
                                     Text('phoneNumber: ${card.phoneNumber}'),
                                     Text('serialNumber: ${card.serialNumber}'),
-                                    Text('subscriptionId: ${card.subscriptionId}'),
+                                    Text(
+                                        'subscriptionId: ${card.subscriptionId}'),
                                     Text('phoneNumber:${card.phoneNumber}'),
                                     Text('slotIndex:${card.slotIndex}'),
                                   ],
@@ -99,7 +99,7 @@ class _MyAppState extends State<MyApp> {
                         Center(
                           child: _isLoading
                               ? const CircularProgressIndicator()
-                              :  Text(exception),
+                              : Text(exception),
                         )
                       ],
               ),
