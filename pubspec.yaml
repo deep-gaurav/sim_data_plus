@@ -28,3 +28,5 @@ flutter:
       android:
         package: com.example.sim_data_plus
         pluginClass: SimDataPlugin
+      ios:
+        pluginClass: SimInfoPlugin
