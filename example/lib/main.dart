@@ -27,6 +27,7 @@ class _MyAppState extends State<MyApp> {
     try {
       //fetching status of access to phone permission
       var status = await Permission.phone.status;
+      setState(() {});
       // if (!status.isGranted) {
       //   bool isGranted = await Permission.phone.request().isGranted;
       //   if (!isGranted) return;
