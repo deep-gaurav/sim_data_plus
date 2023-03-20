@@ -30,7 +30,6 @@ public class SwiftSimDataPlusPlugin: NSObject, FlutterPlugin {
               if(carrier.value?.mobileNetworkCode != nil){
                   let card = Card(mcc: carrier.value?.mobileCountryCode ?? "", mnc: carrier.value?.mobileNetworkCode ?? "", slotIndex: index, carrierName: carrier.value?.carrierName ?? "")
                   cards.append(card);
-                  index += 1;
               }
           }
           let data = Data(cards: cards)
