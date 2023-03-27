@@ -193,6 +193,8 @@ public class SimDataPlugin implements FlutterPlugin, MethodCallHandler, Activity
       int slotIndex = subscriptionInfo.getSimSlotIndex();
       int mcc = subscriptionInfo.getMcc();
       int mnc = subscriptionInfo.getMnc();
+      int subscriptionId = subscriptionInfo.getSubscriptionId();
+
       // String phoneNumber = subscriptionInfo.getNumber();
 
 
@@ -202,6 +204,8 @@ public class SimDataPlugin implements FlutterPlugin, MethodCallHandler, Activity
       card.put("slotIndex", slotIndex);
       card.put("mcc",Integer.toString(mcc));
       card.put("mnc", Integer.toString(mnc));
+      card.put("subscriptionId",subscriptionId);
+
 
       cards.put(card);
 
