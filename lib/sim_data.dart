@@ -27,4 +27,19 @@ class SimDataPlugin {
       rethrow;
     }
   }
+
+  static Future<SimData> getSimDataMinimal() async {
+    try {
+      //getSimData method called using defined method channel
+      dynamic simData = await _channel.invokeMethod('getSimDataMinimal');
+      var data = json.decode(simData);
+      print("going to parse fetched data");
+      SimData simCards = SimData.fromJson(data);
+      print("parsed successfully");
+      return simCards;
+    } on PlatformException catch (e) {
+      debugPrint('SimDataPlugin failed to retrieve data $e');
+      rethrow;
+    }
+  }
 }

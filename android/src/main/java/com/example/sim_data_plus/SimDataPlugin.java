@@ -71,29 +71,41 @@ public class SimDataPlugin implements FlutterPlugin, MethodCallHandler, Activity
   @Override
   public void onMethodCall(@NonNull MethodCall call, @NonNull Result result) {
     //check if permissions are granted 
-    if (!checkPermission()) {
-      requestPermission();
-    }
-    try {
-      //check if android version is android 11
-      String simCards;
-      if(android.os.Build.VERSION.SDK_INT >= 30){
-        System.out.println("higher android");
-        //call getSimData() to fetch sim details in case pf android 11 version
-        simCards = getSimData().toString();
-      }else{
-        System.out.println("lower android");
-        //call getSimData1() to fetch sim details in case of android 10 or lower versions
-        simCards = getSimData1().toString();
+    if(call.method.equals("getSimData")){
+      if (!checkPermission()) {
+        requestPermission();
       }
-      result.success(simCards);
+      try {
+        //check if android version is android 11
+        String simCards;
+        if(android.os.Build.VERSION.SDK_INT >= 30){
+          System.out.println("higher android");
+          //call getSimData() to fetch sim details in case pf android 11 version
+          simCards = getSimData().toString();
+        }else{
+          System.out.println("lower android");
+          //call getSimData1() to fetch sim details in case of android 10 or lower versions
+          simCards = getSimData1().toString();
+        }
+        result.success(simCards);
 
-    } catch (Exception e) {
-      System.out.println("Sim Data Plugin Exception");
-      System.out.println(e);
-      String simCards = "{}";
-      // result.error("SimData_error", e.getMessage(), e.getStackTrace());
-      result.success(simCards);
+      } catch (Exception e) {
+        System.out.println("Sim Data Plugin Exception");
+        System.out.println(e);
+        result.error("SIM_FAILED",e.toString(),e.toString());
+      }
+    } else if(call.method.equals("getSimDataMinimal")) {
+      try {
+        String simCards = getSimDataMinimal().toString();
+        result.success(simCards);
+      } catch (Exception e) {
+        System.out.println("Sim Data Plugin Exception");
+        System.out.println(e);
+        result.error("SIM_FAILED",e.toString(),e.toString());
+      }
+    }
+    else{
+      result.notImplemented();
     }
   }
 
@@ -166,6 +178,42 @@ public class SimDataPlugin implements FlutterPlugin, MethodCallHandler, Activity
     return simCards;
   }
 
+  @SuppressLint("MissingPermission")
+  private JSONObject getSimDataMinimal() throws Exception {
+    //get phone service to access telephone network subscription or sim cards
+    SubscriptionManager subscriptionManager = (SubscriptionManager) this.applicationContext
+            .getSystemService(Context.TELEPHONY_SUBSCRIPTION_SERVICE);
+
+    List<SubscriptionInfo> subscriptionInfos  =subscriptionManager.getActiveSubscriptionInfoList();
+
+    JSONArray cards = new JSONArray();
+    int count = 0;
+    for (SubscriptionInfo subscriptionInfo : subscriptionInfos) {
+      //storing sim data returned from sim card system service object into variables
+      int slotIndex = subscriptionInfo.getSimSlotIndex();
+      int mcc = subscriptionInfo.getMcc();
+      int mnc = subscriptionInfo.getMnc();
+      // String phoneNumber = subscriptionInfo.getNumber();
+
+
+      //storing variable data into new json object for each sim card
+      JSONObject card = new JSONObject();
+
+      card.put("slotIndex", slotIndex);
+      card.put("mcc",Integer.toString(mcc));
+      card.put("mnc", Integer.toString(mnc));
+
+      cards.put(card);
+
+    }
+
+    //storing json array into another json object
+    JSONObject simCards = new JSONObject();
+    simCards.put("cards", cards);
+
+    //return data in json format object
+    return simCards;
+  }
   //sim data fetching method for android 11 version
   @SuppressLint("MissingPermission")
   private JSONObject getSimData() throws Exception {
